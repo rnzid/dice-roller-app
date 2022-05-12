@@ -1,13 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
-function App() {
+const App= () => {
+  const[diceNumber, setDiceNumber] = useState(4)
+  const refreshDice = () => {
+    const ranno =Math.floor(Math.random() * 6) + 1;
+    setDiceNumber(ranno)
+  }
   return (
     <div>
       <center>
-         <img width={300} height={300} src={require('./assets/1.png')}></img>
+         <img alt='dice' width={300} height={300} src={require(`./assets/${diceNumber}.png`)}></img>
          <br/>
-         <button className='button'>Roll</button>
+         <button onClick={()=>refreshDice()} className='button'>Roll</button>
       </center>
     </div>
   );
